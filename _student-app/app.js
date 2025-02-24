@@ -24,20 +24,24 @@ app.get("new-entry", (req, res) => {
     res.render("new-entry")
 })
 
-app.post("new-entry", (req, res) => {
-  if (!req.body.title || !req.body.body){
-    res.status(400).send("Entriesmust have a title and an information body. Please enter your details")
-    return
-  }  const newEntry = { //creating new object, pushing it into the entries array
-    id = entryId++, 
-    title: req.body.title, 
-    body: req.body.body, 
-    published: new Date()
-  }
-  })
-  entries.push(newEntry)
-  res.redirect("/") // back to the root of the folder
-})
+app.post("/new-entry", (req, res) => {
+    if (!req.body.title || !req.body.body) {
+      res.status(400).send("Entries must have a title and an information body. Please enter your details");
+      return;
+    }
+  
+    const newEntry = { // creating new object
+      id: entryId++, 
+      title: req.body.title, 
+      body: req.body.body, 
+      published: new Date()
+    };
+  
+    entries.push(newEntry); // push into the array
+  
+    res.redirect("/"); // back to the root of the folder
+  });
+  
 
 //route to edit 
 app.get("/edit-entry/:id", (req, res) => {
