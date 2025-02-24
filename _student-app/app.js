@@ -63,6 +63,16 @@ res.status(400).send("Both title and text are required")
     res.redirect("/")
 })
 
+app.post("/delete-entry/:", (req, res) =>{
+    const id = parseInt(req.params.id)
+    const index = entries.findIndex(e => e.id === id )
+    if(index === -1){
+        res.status(404).send("Entry not found")
+        return
+    } entries.splice(index, 1)
+    res.redirect("/")
+})
+
 // error handling middleware
 app.use((req, res) => {
     res.status(404).render("404")
