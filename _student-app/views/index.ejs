@@ -1,22 +1,27 @@
-<%include ('header') %> 
+<!--main page content-->
 
+//site header
+<% include ('header') %>
+
+<!--is there is entries, display them here-->
 <% if (entries.length) { %>
-    <% entries.forEach(function(entries))
-<div class="panel" "panel-default">
-    <div class="panel-heading">
-        <div class="text-muted pull-right"">
-        <%= entry.puhlished %>
+  <% entries.forEach(function(entry) { %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-muted pull-right">
+          <%= entry.published %>
+        </div>
+        <%= entry.title %>
+      </div>
+      <div class="panel-body">
+        <%= entry.body %>
+      </div>
     </div>
-    <%= entry.title %>
-    <div class="panel-body"></div>
-</div>
-</div>
 
-<%}) %}>
-<%} else {
-    <%{No Entries <a> href="/new-entry"> Add the Information</a>
-    <%}%>
+    <!--if there is no entries, link to make a new one-->
+  <% }) %>
+<% } else { %>   No entries! <a href="/new-entry">Add information</a>!</a>
+<% } %>
 
-<%include ('footer') %>
-
-<!--Comment in EJS-->
+<!--//displays site footer-->
+<% include ('footer') %>
