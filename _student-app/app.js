@@ -28,11 +28,14 @@ app.post("new-entry", (req, res) => {
   if (!req.body.title || !req.body.body){
     res.status(400).send("Entriesmust have a title and an information body. Please enter your details")
     return
-  }  entries.push({ //creating new object, pushing it into the entries array
+  }  const newEntry = { //creating new object, pushing it into the entries array
+    id = entryId++, 
     title: req.body.title, 
     body: req.body.body, 
     published: new Date()
+  }
   })
+  entries.push(newEntry)
   res.redirect("/") // back to the root of the folder
 })
 
