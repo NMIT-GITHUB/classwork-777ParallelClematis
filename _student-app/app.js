@@ -35,3 +35,12 @@ app.post("new-entry", (req, res) => {
   })
   res.redirect("/") // back to the root of the folder
 })
+
+// error handling middleware
+app.use((req, res) => {
+    res.status(404).render("404")
+})
+
+http.createServer(app).listen(3000, () => {
+    console.log("Student Example App Started")
+})
